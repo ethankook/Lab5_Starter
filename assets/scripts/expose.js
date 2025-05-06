@@ -33,7 +33,7 @@ function init() {
 
   });
 
-  volumeSelect.addEventListener("change", (event) => {
+  volumeSelect.addEventListener("input", (event) => {
     currentVolume = event.target.value;
     if (event.target.value == 0) {
       volumeImg.src = "assets/icons/volume-level-0.svg";
@@ -51,6 +51,7 @@ function init() {
   });
 
   document.querySelector('button').addEventListener("click", (event) => {
+
     if(hornSelect.value == 'party-horn') {
       jsConfetti.addConfetti();
     }
