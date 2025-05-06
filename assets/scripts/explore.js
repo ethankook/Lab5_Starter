@@ -12,6 +12,7 @@ function init() {
   const voiceSelect = document.getElementById("voice-select");
   const textBox = document.querySelector("textarea");
   const talkButton = document.querySelector("button");
+  const faceImg = document.querySelector('img[alt="Smiling face"]');
 
   function populateVoiceList() {
     voices = synth.getVoices();
@@ -56,7 +57,15 @@ function init() {
       }
     }
 
+    utterThis.onstart = function(event) {
+      faceImg.src = "assets/images/smiling-open.png";
+    }
+
+    utterThis.onend = function(event) {
+      faceImg.src = "assets/images/smiling.png"
+    }
     synth.speak(utterThis);
+
 
   });
 
