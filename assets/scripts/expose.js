@@ -6,9 +6,10 @@ function init() {
   // TODO
   const hornSelect = document.getElementById("horn-select");
 
-  const audioElement = document.getElementsByClassName("hidden");
+  const audioElement = document.querySelector("audio.hidden")
   const volumeSelect = document.getElementById("volume");
   const volumeImg = document.querySelector('img[alt="Volume level 2"]');
+  let currentVolume = 0.5;
 
 
   const jsConfetti = new JSConfetti();
@@ -33,7 +34,7 @@ function init() {
   });
 
   volumeSelect.addEventListener("change", (event) => {
-    const volumeValue = event.target.value;
+    currentVolume = event.target.value;
     if (event.target.value == 0) {
       volumeImg.src = "assets/icons/volume-level-0.svg";
     }
@@ -53,7 +54,7 @@ function init() {
     if(hornSelect.value == 'party-horn') {
       jsConfetti.addConfetti();
     }
-    audioElement.volume = volumeValue / 100;
+    audioElement.volume = currentVolume / 100;
     audioElement.play();
 
   });
